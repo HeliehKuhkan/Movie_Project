@@ -1,0 +1,129 @@
+.browse-page{
+    width: 100%;
+    min-height: 100vh;
+    margin-bottom: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-bar{
+    position: relative;
+    background-color: var(--back-shadow);
+    width: 94%;
+    min-height: 16vh;
+    margin: 2rem auto;
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .8em;
+
+    box-shadow: 0 8px 24px rgba(207, 220, 244, 0.08);
+    border-bottom: 1px solid rgba(255,255,255,.3);
+}
+
+.filters{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 1%;
+
+    gap: 15px;
+}
+
+.filters select{
+    min-width: 11rem;
+    height: 2.6rem;
+
+    padding: 0 1rem;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 9999px;
+
+    background: var(--span);
+    font-family: var(--font-sans);
+    font-size: var(--fs-md);
+    color: var(--button);
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.filters select:hover{
+    border-color: #999;
+}
+
+.filters select:focus{
+    border-color: #4f7cff;
+}
+
+.clear-btn{
+    position: absolute;
+    width: 11%;
+    min-width: 80px;
+    padding: .55rem 1rem;
+    margin-bottom: .5%;
+    margin-right: .5%;
+
+    border-radius: 9999px;
+
+    font-size: var(--fs-md);
+    font-family: var(--font-sans);
+    background-color: var(--star);
+    color: var(--button);
+
+    cursor: pointer;
+    inset: auto 1px 1px auto;
+
+    transition: .25s;
+}
+
+.clear-btn:hover{
+    transform: scale(1.05);
+}
+
+.active-filters{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-bottom: .5%;
+    margin-left: .5%;
+}
+
+.filter-tag{
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+
+    padding: .45rem .9rem;
+
+    border-radius: 999px;
+
+    background: #EEF4FF;
+    border: 1px solid #C9DBFF;
+    font-family: var(--font-sans);
+    font-size: var(--fs-md);
+    color: #6A8DFF;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.filter-tag:hover{
+    background: #f4f4f4;
+}
+
+.filter-tag i{
+    font-size: .8rem;
+}
+
+.browse-page .movies-grid{
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,240px);
+    justify-content: center;
+    gap: 40px;
+}

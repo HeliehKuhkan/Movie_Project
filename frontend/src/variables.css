@@ -1,0 +1,51 @@
+:root{
+    --button:#092147;
+    --back-shadow:rgba(240,240,240,.5);
+    --b-shadow:rgba(50,50,50,.2);
+    --border: rgba(255,255,255,.2);
+    --border2: rgba(255,255,255,.60);
+    --card: rgba(200,200,200,.1);
+    --span:#d1eaf9; /*#dee2ff*/
+    --text:#003459;
+    --star:#FFC857;
+    --title:#f4d35e;
+
+
+
+    --background:#0B1320;
+
+   
+    --card-hover:#263547;
+
+    
+    --text-light:#A7B3C4;
+
+    --primary:#4F8EF7;
+    --primary-hover:#2F6EE8;
+
+    
+
+    --borderrr:#32465B;
+
+    --shadow:0 10px 35px rgba(0,0,0,.35);
+
+
+
+
+    --font-sans:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --font-serif: 'Libre Baskerville', Georgia, serif;
+    --font:cursive;
+    
+
+}
+
+:root{
+    /* Font Sizes */
+    --fs-xs: 0.875rem;   
+    --fs-sm: 1rem;       
+    --fs-md: 1.125rem;   
+    --fs-lg: 1.37rem;   
+    --fs-xl: 1.75rem;    
+    --fs-2xl: 2.2rem;   
+    --fs-3xl: 3rem;      
+}

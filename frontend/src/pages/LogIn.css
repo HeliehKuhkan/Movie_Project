@@ -1,0 +1,138 @@
+.log-in{
+  width:100%;
+  flex: 1;
+
+  display:flex;
+  align-items:center;
+  justify-content: center;    
+}
+
+.log-in .main{
+  width: 50%;
+  max-width: 600px;
+  height: 86%;
+  min-height: 520px;
+  border-radius: 130px;
+  padding: 15px;
+  background-color: var(--b-shadow);
+  border: 1px solid var(--border2);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#log{
+  font-family: var(--font-serif);
+  font-size: var(--fs-2xl);
+  color: var(--button);
+  margin-top: 2%;
+}
+
+.inputs{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+  margin-top: 4%;
+  gap: 10px;
+  width:90%;
+  max-width:320px;
+}
+
+.inputs input{
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid var(--border2);
+    padding: 0 15px;
+    margin: 2px;
+    background-color: #d8e1e9;
+}
+
+.inputs input:focus{
+  border: none;
+}
+
+.inputs label{
+  color: var(--button);
+  font-family: var(--font-sans);
+}
+
+.remember-forget{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8%;
+  font-family: var(--font-sans);
+  color: var(--button);
+}
+
+#remember{
+  display: flex;
+  gap: 2px;
+}
+
+#forgetpass{
+  font-size:14px;
+  color: var(--button);
+}
+
+.logbtn{
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  background-color: var(--star);
+  color: var(--button);
+  margin: 4%;
+  width: 35%;
+  height: 8%;
+  border-radius: 9999px;
+  border: 1px solid var(--border2);
+
+  transition:.3s;
+}
+
+.logbtn:hover{
+  transform:scale(1.05);
+}
+
+.or{
+  width: 50%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family: var(--font-sans);
+}
+
+.or hr{
+    flex:1;
+}
+
+.or p{
+    margin:0;
+    color: whitesmoke;
+}
+
+#y{
+  margin-top: 2%;
+  font-family: var(--font-sans);
+  color: var(--button);
+}
+
+.createbtn{
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  background-color: var(--star);
+  color: var(--button);
+  width: 35%;
+  min-width: 139px;
+  height: 8%;
+  border-radius: 9999px;
+  border: 1px solid var(--border2);
+
+  margin: 4%;
+  transition:.3s;
+}
+
+.createbtn:hover{
+    transform:scale(1.05);
+}

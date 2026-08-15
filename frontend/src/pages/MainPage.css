@@ -1,0 +1,154 @@
+.main-page{
+    width:100%;
+    /*height:100vh;*/
+
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex:1;
+}
+
+@media (max-width: 1300px){
+
+    .main-page{
+        gap:40px;
+    }
+
+}
+
+.main-page .movie-card.active{
+    transform: scale(1.09);
+    border:1px solid var(--border2);
+    box-shadow: 0 1box-sha2px 40px rgba(0,0,0,.08);
+}
+
+.movie-list{
+    width:40%;
+
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+
+    gap:20px;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.main-page .movie-card{
+    font-family:var(--font-serif);
+    overflow: hidden;
+    width:94%;
+    max-width:360px;
+    aspect-ratio:16/8.5;
+
+    border-radius:20px;
+
+    position: relative;
+
+    background:var(--card);
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.main-movie-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.main-page .movie-card h3{
+    font-family: var(--font-serif);
+    position: absolute;
+    inset:auto auto 15px 15px;
+    color: white;
+    z-index: 2;
+    text-shadow:0 2px 8px rgba(0,0,0,.8);
+
+    margin:0;
+}
+
+.main-page .movie-card:hover{
+    transform:scale(1.05);
+}
+
+
+.movie-info{
+    width:35%;
+    padding:40px;
+    border-radius:25px;
+    background:var(--back-shadow);
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+    border: 1px solid var(--border2);
+    box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+
+.movie-info h1{
+    color: var(--text);
+}
+
+.movie-info p{
+    font-family: var(--font);
+    color: var(--text);
+}
+
+.movie-meta,
+.movie-details{
+    font-family: var(--font);
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.genres{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.main-page .movie-meta span,
+.main-page .movie-details span{
+    color: var(--text);
+    padding:6px 12px;
+    border-radius:15px;
+    background:var(--span);
+}
+
+.main-page button{
+    font-family: var(--font-sans);
+    font-size: var(--fs-md);
+    background-color: var(--star);
+    color: var(--text);
+    width:150px;
+    padding:12px;
+
+    border:none;
+    border-radius:16px;
+
+    cursor:pointer;
+    transition: .2s;
+}
+
+.main-page button:hover{
+    transform: scale(1.05);
+}
+
+
+
+
+
+.home-sections{
+    width:100%;
+    margin-top:80px;
+}

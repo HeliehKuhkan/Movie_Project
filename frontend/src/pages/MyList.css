@@ -1,0 +1,39 @@
+.mylist-page{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.page-title{
+    font-family: var(--font-serif);
+    color: var(--button);
+    font-size: var(--fs-2xl);
+}
+
+.movie-section{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 3rem;
+}
+
+.movie-section h2{
+    font-family: var(--font-serif);
+    color: var(--text);
+    font-size: var(--fs-xl);
+    border-bottom: 1px groove var(--text);
+    box-shadow: 0 12px 40px rgba(3, 68, 125, 0.186);
+
+}
+
+.movies-grid{    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 280px)); 
+    justify-content: center;
+    gap: 2.5rem;
+    padding-top: 3rem;
+}       

@@ -1,0 +1,151 @@
+.movie-card-{
+    position: relative;
+   
+    width: clamp(200px, 26vw, 260px);
+    flex-shrink: 0;
+    aspect-ratio: 2/4;
+    border-radius: 18px;
+
+    background-color:whitesmoke;
+    display: flex;
+    flex-direction: column;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.45);
+
+    transition:.3s;
+
+}
+
+.movie-card-.similar-card{
+    aspect-ratio: 2/3;
+}
+
+.movie-card-.similar-card:hover{
+    transform:scale(1.01);
+}
+
+.movie-card-.my-list-card{
+    aspect-ratio: 2/3;
+    min-height: 340px;
+}
+
+.movie-card-:hover{
+    transform:scale(1.05);
+    transform:translateY(-8px);
+    cursor:pointer
+}
+
+.poster-container{
+    width: 100%;
+    height: 85%;
+    position: relative;
+    overflow: visible;
+}
+
+@media (max-width: 950px){
+
+    .poster-container{
+        height: 80%;
+    }
+    .rate{
+        min-width: 30px;
+        font-size: var(--fs-xs);
+    }
+
+}
+
+.poster {    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 18px 18px 0 0;
+
+    object-fit: cover;
+    display: block;
+
+    transition:.35s;
+}
+
+.movie-card-:hover .poster{
+
+    filter:brightness(.45);
+
+}
+
+.btn-show-detail{
+    position: absolute;
+    width: 40%;
+    height: 10%;
+    min-height: 45px;
+
+    border-radius:30px;
+    border: 1px solid var(--border);
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 0;
+    transform:translate(-50%,-20%);
+    transition:.35s;
+    background-color: var(--star);
+    color: var(--button);
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+}
+
+.movie-card-:hover .btn-show-detail {
+    opacity: 1;
+    transform:translate(-50%,-50%);
+    cursor:pointer
+}
+
+.movie-info-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 1.5%;
+    margin-left: 2%;
+}
+
+.rate{
+    display: flex;
+    align-items: center;   
+    justify-content: center; 
+    position: absolute;
+    inset: auto auto -3% 2px;
+    z-index: 9999;
+    width: 12%;
+    aspect-ratio: 2/2;
+
+    background: var(--background);
+    font-family: var(--font);
+    
+    color: var(--star);
+    border-radius: 50%;
+    padding: 6px 6px;
+
+    border:1px solid var(--border2);
+}
+
+.name{
+    margin: 5px 0 4px;
+
+    font-size: var(--fs-lg);
+    font-weight: 700;
+
+    color: var(--button);
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.year{
+    overflow: hidden;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+
+    color: #6B7280;
+}

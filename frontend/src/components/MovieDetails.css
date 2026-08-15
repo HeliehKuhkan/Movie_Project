@@ -1,0 +1,150 @@
+
+.movie-details h1{
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    color: var(--title);
+}
+
+.movie-details-page{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-content{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.movie-poster{
+    width: 25%;
+    max-width: 320px;
+    min-width: 230px;
+    overflow: hidden;
+
+    aspect-ratio: 2 / 2.9;
+
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.1);
+    margin: 3%;
+}
+
+.movie-poster img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-details-page .movie-details{
+    width: 46%;
+    max-width: 650px;
+    min-width: 300px;
+    background-color: rgba(0, 0, 0, .1);
+    padding: 2.5%;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.movie-meta{
+    display: flex;
+    gap: 18px;
+    font-size: var(--fs-md);
+}
+
+.movie-meta span , .movie-details p , .actor-card{
+    font-family: var(--font);
+    color: var(--button);
+}
+
+.movie-details p{
+    font-size: var(--fs-lg);
+}
+
+.actor-card{
+    font-size: var(--fs-md);
+}
+
+.cast-section{
+    display: flex;
+    gap: 10px;
+}
+
+.cast-section h3{
+    color: var(--button);
+}
+
+.cast-list{
+    display:flex;
+    align-items: center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.movie-buttons{
+    display: flex;
+    gap: 2%;
+    overflow: hidden;
+}
+
+.movie-buttons button{
+    margin: 5px;
+    width: 10vw;
+    min-width: 140px;
+    height: 5.5vh;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-sans);
+    font-size: var(--fs-lg);
+    background-color: var(--star);
+    color: var(--button);
+
+    transition: .2s;
+}
+
+.movie-buttons button:hover{
+    transform:scale(1.05);
+}
+
+/*SUGGESTIONS*/
+
+
+.similar-section{
+    width: 100%;
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.similar-section h2{
+    padding-left: 5px;
+    margin-bottom: 1%;
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    color: var(--title);
+}
+
+.similar-list{
+    margin-left: 15px;
+
+    overflow-x:auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    display: flex;
+    gap: 2%;
+}
+

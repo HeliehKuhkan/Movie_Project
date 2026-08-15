@@ -1,0 +1,38 @@
+
+*{
+    overflow-x: hidden;
+    margin: 0px;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    gap: 1%;
+
+    width: 100vw;
+    height: 8vh;
+    min-height: 50px;
+    background: var(--back-shadow);
+    backdrop-filter: blur(18px);
+    border-top: 1px solid var(--border);
+
+    color: var(--button);
+    font-family: var(--font-sans);
+    font-size: var(--fs-md);
+
+    padding-left: 1%;
+
+}   
+
+.footer a{
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    padding: 8px;
+    border-radius: 50%;
+
+    transition: .25s;
+}
+
+.footer a:hover{
+    transform: scale(1.05);
+}
