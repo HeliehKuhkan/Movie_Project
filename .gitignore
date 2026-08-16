@@ -221,11 +221,6 @@ __marimo__/
 
 
 
-
-
-
-
-
 # React / Vite
 node_modules/
 dist/
@@ -234,3 +229,7 @@ dist/
 # Local environment files
 .env.local
 .env.*.local
+
+.vscode/
+
+*.db
