@@ -25,6 +25,8 @@ def get_movies(
     search: str | None = Query(default=None),
     type: str | None = Query(default=None),
     genre: str | None = Query(default=None),
+    year_from: int | None = Query(default=None),
+    rating_from: float | None = Query(default=None),
     sort: str | None = Query(default=None),
     db: Session = Depends(get_db)
 ):
@@ -36,11 +38,22 @@ def get_movies(
         query = query.filter(Movie.type == type)
     if genre:
         query = query.filter(Movie.genre.contains(genre))
-    if sort == "rating":
+    if year_from:
+        query = query.filter(Movie.year >= year_from)
+    if rating_from:
+        query = query.filter(Movie.rating >= rating_from)
+
+    if sort == "newest":
+        query = query.order_by(Movie.year.desc())
+
+    elif sort == "oldest":
+        query = query.order_by(Movie.year.asc())
+
+    elif sort == "rating":
         query = query.order_by(Movie.rating.desc())
 
-    elif sort == "year":
-        query = query.order_by(Movie.year.desc())
+    elif sort == "title":
+        query = query.order_by(Movie.title.asc())
 
     return query.all() 
 
