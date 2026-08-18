@@ -1,8 +1,6 @@
 import { Fragment } from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
 
 function Header(){
     

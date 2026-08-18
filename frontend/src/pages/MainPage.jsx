@@ -5,29 +5,48 @@ import { useNavigate } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import MovieRow from "../components/MovieRow";
 
-import movies from "../data/movies";
+/*import movies from "../data/movies";*/
+import { getMovies } from "../api/movies";
 
 function MainPage(){
 
-    const trendingMovies = movies.slice(0, 6);
-    const topRatedMovies = [...movies].sort((a, b) => b.rating - a.rating).slice(0, 6);
-
-
+    const [movies, setMovies] = useState([]);
     const navigate = useNavigate();
-
     const [currentIndex, setCurrentIndex] = useState(0);
-    const selectedMovie = movies[(currentIndex+1)% movies.length];
-    const visibleMovies = [
-    movies[currentIndex],
-    movies[(currentIndex + 1) % movies.length],
-    movies[(currentIndex + 2) % movies.length], ];
+
 
     useEffect(() => {
+    getMovies()
+        .then((data) => {
+            console.log("MOVIES:", data);
+            setMovies(data);
+        })
+        .catch((error) => {
+            console.error("API ERROR:", error);
+        });
+    }, []);
+
+    useEffect(() => {
+                    if (movies.length === 0) return;
                     const interval = setInterval(() => {
                         setCurrentIndex((prevIndex) =>
                         (prevIndex + 1) % movies.length
                         );}, 8000);
-                    return () => clearInterval(interval);},[]);
+                    return () => clearInterval(interval);},[movies.length]);
+    
+    if (movies.length === 0) {
+    return <div>Loading...</div>;
+    }
+                                
+    const trendingMovies = movies.slice(0, 6);
+    const topRatedMovies = [...movies].sort((a, b) => b.rating - a.rating).slice(0, 6);
+
+
+    const selectedMovie = movies[(currentIndex+1)% movies.length];
+    const visibleMovies = [
+    movies[currentIndex],
+    movies[(currentIndex + 1) % movies.length],
+    movies[(currentIndex + 2) % movies.length], ];         
 
     return(
         <Fragment>

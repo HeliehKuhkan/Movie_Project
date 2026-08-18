@@ -1,15 +1,41 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import "./MovieDetails.css";
 import MovieCard from "../components/MovieCard";
 
 import { useParams } from "react-router-dom";
 import movies from "../data/movies";
+import { getMovie,getMovies} from "../api/movies";
 
 function MovieDetails(){
     const { id } = useParams();
-    const movie = movies.find((m) => m.id === Number(id));
+
+    const [movie, setMovie] = useState(null);
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        getMovie(id)
+            .then((data) => {
+                console.log("MOVIE:", data);
+                setMovie(data);
+            })
+            .catch((error) => {
+                console.error("API ERROR:", error);
+            });
+    }, [id]);
+
+    useEffect(() => {
+    getMovies()
+        .then((data) => {
+            setMovies(data);
+        })
+        .catch((error) => {
+            console.error("API ERROR:", error);
+        });
+    }, []);
+
     if (!movie) {
-    return (<h1>Movie Not Found</h1>)}
+        return <div>Loading...</div>;
+    }
 
     const similarMovies = movies.filter((m) =>
 

@@ -3,9 +3,11 @@ import "./BrowsePage.css";
 import MovieCard from '../components/MovieCard';
 import { useParams } from "react-router-dom";
 
-import movies from "../data/movies";
+/*import movies from "../data/movies";*/
+import { getMoviesWithFilters } from "../api/movies";
 
 function BrowsePage(){
+    const [movies, setMovies] = useState([]);
 
     const { type: routeType } = useParams();
 
@@ -27,7 +29,23 @@ function BrowsePage(){
     setType(routeType || "");
     }, [routeType]);
 
-    const filteredMovies = movies.filter((movie) =>{
+    useEffect(() => {
+    getMoviesWithFilters({
+        type,
+        genre,
+        year,
+        rating,
+        sort
+    })
+        .then((data) => {
+            setMovies(data);
+        })
+        .catch((error) => {
+            console.error("API ERROR:", error);
+        });
+    }, [type, genre, year, rating, sort]);
+
+    /*const filteredMovies = movies.filter((movie) =>{
         const matchType = type === "" || movie.type === type;
         const matchGenre = genre === "" || movie.genre.includes(genre);
         const matchYear = year === "" || movie.year >= Number(year);
@@ -51,7 +69,7 @@ function BrowsePage(){
 
     if (sort === "az") {
         sortedMovies.sort((a, b) => a.title.localeCompare(b.title));
-    }
+    }*/
 
     return(
         <Fragment>
@@ -119,7 +137,7 @@ function BrowsePage(){
             </div>
 
             <div className="movies-grid">
-                {sortedMovies.map((movie) => (<MovieCard movie={movie} key={movie.id} />))}
+                {movies.map((movie) => (<MovieCard movie={movie} key={movie.id} />))}
             </div>
 
         </div>

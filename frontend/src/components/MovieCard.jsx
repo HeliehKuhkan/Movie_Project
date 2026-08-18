@@ -2,8 +2,6 @@ import { Fragment } from "react";
 import "./MovieCard.css";
 import { useNavigate } from "react-router-dom";
 
-import movies from "../data/movies";
-
 function MovieCard({movie,variant}){
     const navigate = useNavigate();
     console.log("variant:", variant);

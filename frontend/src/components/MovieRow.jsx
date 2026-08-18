@@ -26,7 +26,7 @@ const scrollRight = () => {
 
                 <h2>{title}</h2>
 
-                <button className="left-btn" onClick={scrollLeft}><i class="bi bi-caret-left-fill"></i></button>
+                <button className="left-btn" onClick={scrollLeft}><i className="bi bi-caret-left-fill"></i></button>
 
                 <div ref={rowRef} className="home-row-movies">
                     
@@ -40,7 +40,7 @@ const scrollRight = () => {
                     
                 </div>
 
-                <button className="right-btn" onClick={scrollRight}><i class="bi bi-caret-right-fill"></i></button>
+                <button className="right-btn" onClick={scrollRight}><i className="bi bi-caret-right-fill"></i></button>
 
             </section>
         </Fragment>

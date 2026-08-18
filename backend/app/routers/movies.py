@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends,HTTPException,Query
+from fastapi import APIRouter, Depends,HTTPException,Query,Request
 from sqlalchemy.orm import Session
 
 from app.database import SessionLocal
@@ -22,6 +22,7 @@ def get_db():
 
 @router.get("/", response_model=list[MovieResponse])
 def get_movies(
+    request: Request,
     search: str | None = Query(default=None),
     type: str | None = Query(default=None),
     genre: str | None = Query(default=None),
@@ -52,17 +53,32 @@ def get_movies(
     elif sort == "rating":
         query = query.order_by(Movie.rating.desc())
 
-    elif sort == "title":
+    elif sort == "az":
         query = query.order_by(Movie.title.asc())
 
-    return query.all() 
+    movies = query.all()
+
+    for movie in movies:
+        if movie.poster:
+            movie.poster = str(request.base_url) + "static" + movie.poster
+
+        if movie.backdrop:
+            movie.backdrop = str(request.base_url) + "static" + movie.backdrop
+
+    return movies
 
 @router.get("/{movie_id}",response_model=MovieResponse)
-def get_movie(movie_id: int, db: Session = Depends(get_db)):
+def get_movie(request: Request,movie_id: int, db: Session = Depends(get_db)):
     movie = db.query(Movie).filter(Movie.id == movie_id).first()
 
     if movie is None:
         raise HTTPException(status_code=404,detail="Movie not found")
+
+    if movie.poster:
+        movie.poster = str(request.base_url) + "static" + movie.poster
+    
+    if movie.backdrop:
+        movie.backdrop = str(request.base_url) + "static" + movie.backdrop
 
     return movie
 
