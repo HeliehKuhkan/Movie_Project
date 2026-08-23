@@ -22,7 +22,8 @@ export async function getMovie(id) {
 
 export async function getMoviesWithFilters(params = {}) {
     const query = new URLSearchParams();
-
+    
+    if (params.search) query.append("search", params.search);
     if (params.type) query.append("type", params.type);
     if (params.genre) query.append("genre", params.genre);
     if (params.year) query.append("year_from", params.year);

@@ -1,7 +1,46 @@
-import { Fragment } from "react";
 import "./SignUp.css";
+import { Fragment, useState } from "react";
 
 function SignUp(){
+    const [error, setError] = useState("");
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const handleSignup = async () => {
+    setError("");
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    const response = await fetch("http://127.0.0.1:8000/auth/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password
+        })
+    });
+
+    const data = await response.json();
+
+    if (response.status === 422) {
+        alert("Please enter a valid email address");
+    } else {
+        alert(data.detail);
+    }
+
+    console.log(data);
+    alert("Account created successfully!");
+    };
+
     return(
         <Fragment>
             <div className="sign-up">
@@ -9,25 +48,29 @@ function SignUp(){
 
                     <h1 id="sign">Create Account</h1>
                     <div className="sign-inputs">
-                        <label htmlFor="name">Full Name <i class="bi bi-person"></i></label> 
-                        <input type="text" name="name" id="name" placeholder="Enter your name" />
+                        <label htmlFor="name">Full Name <i className="bi bi-person"></i></label> 
+                        <input type="text" name="name" id="name" placeholder="Enter your name" value={name}
+                        onChange={(e) => setName(e.target.value)} />
 
-                        <label htmlFor="email">Email address <i class="bi bi-envelope-at"></i></label> 
-                        <input type="email" name="email" id="email" placeholder="Enter your email" />
+                        <label htmlFor="email">Email address <i className="bi bi-envelope-at"></i></label> 
+                        <input type="email" name="email" id="email" placeholder="Enter your email" value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
 
-                        <label htmlFor="pass">Password <i class="bi bi-unlock2"></i></label>
-                        <input type="password" name="pass" id="password" placeholder="Enter your password" />
+                        <label htmlFor="password">Password <i className="bi bi-unlock2"></i></label>
+                        <input type="password" name="pass" id="password" placeholder="Enter your password" value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
 
-                        <label htmlFor="pass">Confirm Password <i class="bi bi-unlock2"></i></label>
-                        <input type="password" name="pass" id="password" placeholder="Enter your password" /> 
+                        <label htmlFor="confirm-password">Confirm Password <i className="bi bi-unlock2"></i></label>
+                        <input type="password" name="confirmPass" id="confirm-password" placeholder="Enter your password" value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)} /> 
                     </div>
 
                     <div className="agree">
                         <input type="checkbox" name="" id="" />
                         I agree to the <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
                     </div>
-
-                    <button className="CA-btn">Create Account</button>
+                    {error && <p className="error">{error}</p>}
+                    <button className="CA-btn" onClick={handleSignup}>Create Account</button>
 
                     <div className="or">
                         <hr />
@@ -35,7 +78,6 @@ function SignUp(){
                         <hr />
                     </div>
 
-                    <p id="x">Already have an account?</p>
                     <button className="log-btn">SIGN IN</button>
 
                 </div>

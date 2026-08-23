@@ -26,6 +26,7 @@ function App() {
         <Route path="/movie/:id" element={<MovieDetails/>}/>
         <Route path="/MovieCard" element={<MovieCard/>}></Route>
         <Route path="/browse/:type" element={<BrowsePage />} />
+        <Route path="/search" element={<BrowsePage />} />
         <Route path="/MyList" element={<MyList/>}></Route>
         <Route path='/movierow' element={<MovieRow/>}></Route>
         </Route>

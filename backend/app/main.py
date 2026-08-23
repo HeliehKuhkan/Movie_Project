@@ -3,10 +3,12 @@ from fastapi import FastAPI
 from app.database import engine, Base
 from app.models.movie import Movie
 from app.routers.movies import router as movies_router
+from app.routers.auth import router as auth_router
+from app.routers.favorites import router as favorites_router
 from fastapi.staticfiles import StaticFiles
+from app.models.user import User
 
-Base.metadata.create_all(bind=engine)
-
+""" Base.metadata.create_all(bind=engine) """
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -20,3 +22,5 @@ app.add_middleware(
 )
 
 app.include_router(movies_router)
+app.include_router(auth_router)
+app.include_router(favorites_router)

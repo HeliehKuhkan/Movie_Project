@@ -1,7 +1,7 @@
 import { Fragment,useState,useEffect } from "react";
 import "./BrowsePage.css";
 import MovieCard from '../components/MovieCard';
-import { useParams } from "react-router-dom";
+import { useParams,useSearchParams  } from "react-router-dom";
 
 /*import movies from "../data/movies";*/
 import { getMoviesWithFilters } from "../api/movies";
@@ -10,6 +10,8 @@ function BrowsePage(){
     const [movies, setMovies] = useState([]);
 
     const { type: routeType } = useParams();
+    const [searchParams] = useSearchParams();
+    const search = searchParams.get("q") || "";
 
     const clearFilters = () => {
     setType("");
@@ -31,6 +33,7 @@ function BrowsePage(){
 
     useEffect(() => {
     getMoviesWithFilters({
+        search,
         type,
         genre,
         year,
@@ -43,7 +46,7 @@ function BrowsePage(){
         .catch((error) => {
             console.error("API ERROR:", error);
         });
-    }, [type, genre, year, rating, sort]);
+    }, [search,type, genre, year, rating, sort]);
 
     /*const filteredMovies = movies.filter((movie) =>{
         const matchType = type === "" || movie.type === type;
@@ -135,9 +138,21 @@ function BrowsePage(){
 
                 </div>
             </div>
-
+            {search && (
+                <h2 className="search-result-title">
+                    Search results for: "{search}"
+                </h2>
+            )}
             <div className="movies-grid">
-                {movies.map((movie) => (<MovieCard movie={movie} key={movie.id} />))}
+                {movies.length > 0 ? (
+                    movies.map((movie) => (
+                        <MovieCard movie={movie} key={movie.id} />
+                    ))
+                ) : (
+                    <p className="no-results">
+                        No movies found.
+                    </p>
+                )}
             </div>
 
         </div>

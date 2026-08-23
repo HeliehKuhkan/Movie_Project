@@ -33,7 +33,7 @@
 .movies-grid{    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 280px)); 
-    justify-content: center;
+    justify-content:space-evenly;
     gap: 2.5rem;
     padding-top: 3rem;
 }       

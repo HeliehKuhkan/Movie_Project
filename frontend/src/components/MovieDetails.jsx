@@ -3,14 +3,15 @@ import "./MovieDetails.css";
 import MovieCard from "../components/MovieCard";
 
 import { useParams } from "react-router-dom";
-import movies from "../data/movies";
 import { getMovie,getMovies} from "../api/movies";
+import { getFavorites, addFavorite, deleteFavorite } from "../api/favorites";
 
 function MovieDetails(){
     const { id } = useParams();
 
     const [movie, setMovie] = useState(null);
     const [movies, setMovies] = useState([]);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
         getMovie(id)
@@ -33,6 +34,24 @@ function MovieDetails(){
         });
     }, []);
 
+    useEffect(() => {
+
+    getFavorites()
+        .then(data => {
+
+            const favoriteMovie = data.some(
+                favorite => favorite.id === Number(id)
+            );
+
+            setIsFavorite(favoriteMovie);
+
+        })
+        .catch(error => {
+            console.error("Favorites error:", error);
+        });
+
+    }, [id]);
+
     if (!movie) {
         return <div>Loading...</div>;
     }
@@ -40,6 +59,30 @@ function MovieDetails(){
     const similarMovies = movies.filter((m) =>
 
         m.id !== movie.id && m.genre.some((genre) =>movie.genre.includes(genre)) ).slice(0,5);
+
+    const handleFavorite = async () => {
+
+    try {
+
+        if (isFavorite) {
+
+            await deleteFavorite(movie.id);
+            setIsFavorite(false);
+
+        } else {
+
+            await addFavorite(movie.id);
+            setIsFavorite(true);
+
+        }
+
+    } catch (error) {
+
+        console.error("Favorite error:", error);
+        alert(error.message);
+
+    }
+    };
 
     return(
         <Fragment>
@@ -73,7 +116,10 @@ function MovieDetails(){
 
                         <div className="movie-buttons">
                             <button><i className="bi bi-play-btn"></i>Play</button>
-                            <button><i className="bi bi-heart-fill"></i>Favourite</button>
+                            <button onClick={handleFavorite}>
+                                <i className={isFavorite ? "bi bi-heart-fill" : "bi bi-heart"}></i>
+                                {isFavorite ? "Remove" : "Add"}
+                            </button>
                         </div>
 
                     </div>
