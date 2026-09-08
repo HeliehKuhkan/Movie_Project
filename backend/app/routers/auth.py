@@ -62,6 +62,17 @@ def get_current_user(
 
     return user
 
+def get_current_admin(
+    current_user: User = Depends(get_current_user)
+):
+    if not current_user.is_admin:
+        raise HTTPException(
+            status_code=403,
+            detail="Admin access required"
+        )
+
+    return current_user
+
 @router.post("/signup")
 def signup(user: UserCreate, db: Session = Depends(get_db)):
 
@@ -114,5 +125,6 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     return {
     "message": "Login successful",
     "access_token": access_token,
-    "token_type": "bearer"
+    "token_type": "bearer",
+    "is_admin": existing_user.is_admin
     }

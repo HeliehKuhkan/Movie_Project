@@ -1,8 +1,9 @@
 :root{
     --button:#092147;
     --back-shadow:rgba(240,240,240,.5);
-    --b-shadow:rgba(50,50,50,.2);
-    --border: rgba(255,255,255,.2);
+    --back-shadow2:rgba(70, 95, 118, 0.55);
+    --b-shadow:rgba(150,150,150,0.45);
+    --border: rgba(255,255,255,.12);
     --border2: rgba(255,255,255,.60);
     --card: rgba(200,200,200,.1);
     --span:#d1eaf9; /*#dee2ff*/
@@ -10,11 +11,7 @@
     --star:#FFC857;
     --title:#f4d35e;
 
-
-
     --background:#0B1320;
-
-   
     --card-hover:#263547;
 
     

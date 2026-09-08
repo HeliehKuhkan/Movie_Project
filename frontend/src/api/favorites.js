@@ -1,5 +1,7 @@
 export async function getFavorites() {
-    const token = localStorage.getItem("access_token");
+    const token =
+    localStorage.getItem("access_token") ||
+    sessionStorage.getItem("access_token");
 
     const response = await fetch(
         "http://127.0.0.1:8000/favorites/",
@@ -21,7 +23,9 @@ export async function getFavorites() {
 
 export async function addFavorite(movieId) {
 
-    const token = localStorage.getItem("access_token");
+    const token =
+    localStorage.getItem("access_token") ||
+    sessionStorage.getItem("access_token");
 
     const response = await fetch(
         `http://127.0.0.1:8000/favorites/${movieId}`,
@@ -45,7 +49,9 @@ export async function addFavorite(movieId) {
 
 export async function deleteFavorite(movieId) {
 
-    const token = localStorage.getItem("access_token");
+    const token =
+    localStorage.getItem("access_token") ||
+    sessionStorage.getItem("access_token");
 
     const response = await fetch(
         `http://127.0.0.1:8000/favorites/${movieId}`,

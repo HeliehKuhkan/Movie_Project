@@ -1,0 +1,73 @@
+.admin-users h1{
+    font-family: var(--font-serif);
+    color: var(--text);
+    font-size: var(--fs-2xl);
+    margin:0.5% 0;
+}
+
+.users-list{
+    background-color: rgb(255, 255, 255);
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.users-header,
+.user-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+
+    justify-content: center;
+    text-align: center;
+
+    align-items: center;    
+    width: 90%;            
+    margin: 0 auto; 
+}
+
+.users-header{
+    font-family: var(--font-serif);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--button);
+    padding: 1%;
+    border-radius: 12px;
+    background-color: rgb(250, 250, 250);
+}
+
+.user-row{
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    color: var(--button);
+    padding: 15px 0px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.actions-btn button{
+    font-size: var(--fs-sm);
+    padding: 2.5%;
+    margin: 1%;
+    border-radius: 8px;
+    border-color: #eaf1f8;
+
+    transition: 0.2s;
+}
+
+.actions-btn button:hover{
+    transform: scale(1.06);
+}
+
+.make-admin-btn{
+    color: #1479b8;
+    background-color: #e0f2fe;
+}
+
+.remove-admin-btn{
+    color: #64748b;
+    background-color: #f1f5f9;
+}
+
+.delete-user-btn{
+    color: #d64545;
+    background-color: #fff1f2;
+}

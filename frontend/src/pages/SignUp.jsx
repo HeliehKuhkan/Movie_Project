@@ -1,13 +1,17 @@
 import "./SignUp.css";
 import { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignUp(){
+    const navigate = useNavigate();
+    
     const [error, setError] = useState("");
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
 
     const handleSignup = async () => {
     setError("");
@@ -17,29 +21,43 @@ function SignUp(){
         return;
     }
 
-    const response = await fetch("http://127.0.0.1:8000/auth/signup", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name: name,
-            email: email,
-            password: password
-        })
-    });
+    try {
+        const response = await fetch(
+            "http://127.0.0.1:8000/auth/signup",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            }
+        );
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (response.status === 422) {
-        alert("Please enter a valid email address");
-    } else {
-        alert(data.detail);
+        console.log(data);
+
+        if (!response.ok) {
+            if (response.status === 422) {
+                alert("Please enter a valid email address");
+            } else {
+                alert(data.detail || "Something went wrong");
+            }
+
+            return;
+        }
+
+        alert("Account created successfully!");
+
+    } catch (error) {
+        console.error("Signup error:", error);
+        alert("Something went wrong. Please try again.");
     }
-
-    console.log(data);
-    alert("Account created successfully!");
-    };
+};
 
     return(
         <Fragment>
@@ -66,8 +84,7 @@ function SignUp(){
                     </div>
 
                     <div className="agree">
-                        <input type="checkbox" name="" id="" />
-                        I agree to the <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
+                        By clicking “Create Account”, you agree to our <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
                     </div>
                     {error && <p className="error">{error}</p>}
                     <button className="CA-btn" onClick={handleSignup}>Create Account</button>
@@ -78,7 +95,7 @@ function SignUp(){
                         <hr />
                     </div>
 
-                    <button className="log-btn">SIGN IN</button>
+                    <button type="button" onClick={() => navigate(`/LogIn`)} className="log-btn">SIGN IN</button>
 
                 </div>
 

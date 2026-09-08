@@ -36,19 +36,28 @@ function MovieDetails(){
 
     useEffect(() => {
 
-    getFavorites()
-        .then(data => {
+        const token =
+        localStorage.getItem("access_token") ||
+        sessionStorage.getItem("access_token");
 
-            const favoriteMovie = data.some(
-                favorite => favorite.id === Number(id)
-            );
+        if (!token) {
+            setIsFavorite(false);
+            return;
+        }
 
-            setIsFavorite(favoriteMovie);
+        getFavorites()
+            .then(data => {
 
-        })
-        .catch(error => {
-            console.error("Favorites error:", error);
-        });
+                const favoriteMovie = data.some(
+                    favorite => favorite.id === Number(id)
+                );
+
+                setIsFavorite(favoriteMovie);
+
+            })
+            .catch(error => {
+                console.error("Favorites error:", error);
+            });
 
     }, [id]);
 
@@ -62,26 +71,26 @@ function MovieDetails(){
 
     const handleFavorite = async () => {
 
-    try {
+        try {
 
-        if (isFavorite) {
+            if (isFavorite) {
 
-            await deleteFavorite(movie.id);
-            setIsFavorite(false);
+                await deleteFavorite(movie.id);
+                setIsFavorite(false);
 
-        } else {
+            } else {
 
-            await addFavorite(movie.id);
-            setIsFavorite(true);
+                await addFavorite(movie.id);
+                setIsFavorite(true);
+
+            }
+
+        } catch (error) {
+
+            console.error("Favorite error:", error);
+            alert("Please log in to add this movie to your favorites.");
 
         }
-
-    } catch (error) {
-
-        console.error("Favorite error:", error);
-        alert(error.message);
-
-    }
     };
 
     return(
@@ -108,10 +117,15 @@ function MovieDetails(){
                             <div className="cast-list">
                                 {movie.cast.map((actor) => (
                                 <div className="actor-card" key={actor}>
-                                    {actor}
+                                    {actor}.
                                 </div>))}
                             </div>
 
+                        </div>
+
+                        <div className="lang">
+                            <span>{movie.language}</span>
+                            <span>{movie.country}</span>
                         </div>
 
                         <div className="movie-buttons">

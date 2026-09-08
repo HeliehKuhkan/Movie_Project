@@ -1,17 +1,18 @@
     import { Fragment,useState,useEffect  } from "react";
     import "./header.css";
     import { Link,useNavigate } from "react-router-dom";
+    import logo from "../../assets/logo.png";
 
     function Header(){
         const navigate = useNavigate();
         const [search, setSearch] = useState("");
-        const [isLoggedIn, setIsLoggedIn] = useState( !!localStorage.getItem("access_token") );
+        const [isLoggedIn, setIsLoggedIn] = useState( !!(localStorage.getItem("access_token") || sessionStorage.getItem("access_token")) );
 
         useEffect(() => {
             const handleLogin = () => {
-                setIsLoggedIn(!!localStorage.getItem("access_token"));
+                setIsLoggedIn(!!(localStorage.getItem("access_token") || sessionStorage.getItem("access_token")));
             };
-
+            
             window.addEventListener("login", handleLogin);
 
             return () => {
@@ -21,6 +22,7 @@
 
         const handleLogout = () => {
             localStorage.removeItem("access_token");
+            sessionStorage.removeItem("access_token");
             setIsLoggedIn(false);
             navigate("/");
         };
@@ -28,7 +30,10 @@
         const handleSearch = (e) => {
             e.preventDefault();
 
-            if (!search.trim()) return;
+            if (!search.trim()) {
+                navigate("/browse");
+                return;
+            }
 
             navigate(`/search?q=${encodeURIComponent(search.trim())}`);
         };
@@ -38,7 +43,7 @@
                 <div className="header">
                     
                     <div className="options-logo">
-                        <img src="./src/assets/logo.png" alt="my logo" />
+                        <img src={logo} alt="my logo" />
                         <Link to="/">Home</Link>
                         <Link to="/browse/movie">Movies</Link>
                         <Link to="/browse/series">Series</Link>

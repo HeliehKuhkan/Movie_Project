@@ -1,0 +1,165 @@
+.movies-top{
+    display: flex;
+    flex-direction: column;
+}
+
+.movies-top h1{
+    font-family: var(--font-serif);
+    color: var(--text);
+    font-size: var(--fs-2xl);
+    margin:0.5% 0;
+}
+
+.menu{
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    padding: 1%;
+    border-radius: 15px;
+    margin: 1%;
+}
+
+.add-btn{
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    padding: 0.7%;
+    border-radius: 999px;
+    background-color: var(--star);
+    border: 1px solid var(--text);
+
+    transition: 0.2s;
+}
+
+.add-btn:hover{
+    transform: scale(1.07);
+}
+
+.admin-search{
+    width: 15vw;
+    height: 4vh;
+    border-radius: 999px;
+    border: 1px solid var(--text);
+}
+
+.movies-list{
+    box-shadow: 0 6px 20px rgba(30, 44, 56, 0.08);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.movies-header{
+    font-family: var(--font-serif);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--button);
+    padding: 1%;
+    border-radius: 12px;
+    background-color: rgb(250, 250, 250);
+}
+
+.movies-header,
+.movie-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+
+    align-items: center;    
+    width: 90%;            
+    margin: 0 auto; 
+}
+
+.movie-row{
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    color: var(--button);
+    padding: 15px 0px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.actions-div button{
+    font-size: var(--fs-sm);
+    padding: 2.5%;
+    margin: 1%;
+    border-radius: 8px;
+    border-color: #eaf1f8;
+
+    transition: 0.2s;
+}
+
+.actions-div button:hover{
+    transform: scale(1.07);
+}
+
+.actions-div .view-btn{
+    color: #64748b;
+    background-color: #f1f5f9;
+}
+
+.actions-div .edit-btn{
+    color: #1479b8;
+    background-color: #e0f2fe;
+}
+
+.actions-div .delete-btn{
+    color: #d64545;
+    background-color: #fff1f2;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+
+.pagination{
+    background-color: rgb(255, 255, 255);
+
+    width: 20%;
+    min-width: 220px;
+    padding: 1%;
+    border-radius: 999px;
+
+    margin: 15px auto; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(30, 44, 56, 0.08);
+}
+
+.pagination button{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #f2e7bc75;
+    box-shadow: 0 0px 20px rgba(30, 44, 56, 0.08);
+    color: #1e2c38; 
+
+
+    font-size: var(--fs-lg);
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.pagination button:not(:disabled){
+    background-color: #f3e7b7;
+}
+
+.pagination button:hover:not(:disabled){
+    transform: scale(1.07);
+}
+
+.pagination span{
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    color: #1e2c38; 
+
+}

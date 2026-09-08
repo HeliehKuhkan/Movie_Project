@@ -3,7 +3,7 @@
    
     width: clamp(200px, 26vw, 260px);
     flex-shrink: 0;
-    aspect-ratio: 2/4;
+    aspect-ratio: 2.1/4;
     border-radius: 18px;
 
     background-color:whitesmoke;
@@ -60,7 +60,7 @@
     overflow: hidden;
     border-radius: 18px 18px 0 0;
 
-    object-fit: cover;
+    object-fit:unset;
     display: block;
 
     transition:.35s;

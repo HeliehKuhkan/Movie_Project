@@ -23,9 +23,9 @@
 
 .movie-section h2{
     font-family: var(--font-serif);
-    color: var(--text);
+    color: #F0F4F8;
     font-size: var(--fs-xl);
-    border-bottom: 1px groove var(--text);
+    border-bottom: 1px groove #F0F4F8;
     box-shadow: 0 12px 40px rgba(3, 68, 125, 0.186);
 
 }
@@ -36,4 +36,13 @@
     justify-content:space-evenly;
     gap: 2.5rem;
     padding-top: 3rem;
-}       
+}   
+
+.empty-message{
+    position: relative;
+
+    width: 50vw;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: #F0F4F8;
+}

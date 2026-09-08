@@ -7,15 +7,27 @@ import { getFavorites } from "../api/favorites";
 
 function MyList(){
     const [myMovies, setMyMovies] = useState([]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
+        const token =
+        localStorage.getItem("access_token") ||
+        sessionStorage.getItem("access_token");
+
+        if (!token) {
+            setIsLoggedIn(false);
+            return;
+        }
+
+        setIsLoggedIn(true);
+
         getFavorites()
             .then(data => {
-                console.log("MY FAVORITES:", data);
                 setMyMovies(data);
             })
             .catch(error => {
                 console.error("Favorites error:", error);
+                setMyMovies([]);
             });
     }, []);
     return(
@@ -38,15 +50,25 @@ function MyList(){
                 </section> */}
 
                 <section className="movie-section">
-                    <h2>Favorites <i className="bi bi-hand-thumbs-up-fill"></i></h2>
+                    <h2>Favorites <i className="bi bi-bookmark-heart-fill"></i></h2>
 
                     <div className="movies-grid">
-                        {myMovies.length > 0 ? (
+                        {!isLoggedIn ? (
+                            <p className="empty-message">
+                                Please log in to view your favorites.
+                            </p>
+                        ) : myMovies.length > 0 ? (
                             myMovies.map(movie => (
-                                <MovieCard movie={movie} key={movie.id} variant="my-list-card" />
+                                <MovieCard
+                                    movie={movie}
+                                    key={movie.id}
+                                    variant="my-list-card"
+                                />
                             ))
                         ) : (
-                            <p className="empty-message">You haven't added any favorites yet.</p>
+                            <p className="empty-message">
+                                You haven't added any favorites yet.
+                            </p>
                         )}
                     </div>
                 </section>

@@ -7,6 +7,7 @@ from app.routers.auth import router as auth_router
 from app.routers.favorites import router as favorites_router
 from fastapi.staticfiles import StaticFiles
 from app.models.user import User
+from app.routers.admin import router as admin_router
 
 """ Base.metadata.create_all(bind=engine) """
 app = FastAPI()
@@ -24,3 +25,4 @@ app.add_middleware(
 app.include_router(movies_router)
 app.include_router(auth_router)
 app.include_router(favorites_router)
+app.include_router(admin_router)

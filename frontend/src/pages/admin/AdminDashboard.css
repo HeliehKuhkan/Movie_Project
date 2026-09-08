@@ -1,0 +1,118 @@
+.admin-content-d h1 {
+    font-family: var(--font-serif);
+    color: var(--text);
+    font-size: var(--fs-2xl);
+
+    margin-top: 1%;
+}
+
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    gap: 8%;
+    padding: 20px;
+}
+
+.dashboard-card {
+    width: 9%;
+    min-width: 100px;
+    background-color: rgb(255, 255, 255);
+    padding: 3%;
+    margin: 2%;
+    border-radius: 12px;
+    box-shadow: 0 0px 18px rgba(229, 169, 60, 0.1);
+}
+
+.dashboard-card h3 {
+    margin: 0 0 15px;
+    font-family: var(--font-sans);
+    font-size: var(--fs-xl);
+    color: var(--text);
+}
+
+.dashboard-card p {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--fs-2xl);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.recent-movies {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    padding-right: 20px;
+    border-radius: 15px;
+    margin: 15px 0px 20px 20px;
+    width: 80%;
+    box-shadow: 0 0px 18px rgba(229, 169, 60, 0.1);
+}
+
+.recent-movies h2{
+    width: 90%;
+    border-bottom: 1px solid var(--text);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 600;
+}
+
+.recent-movies-header {
+    font-family: var(--font-serif);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--button);
+    padding: 15px 20px;
+}
+
+.recent-movies-header,
+.recent-movie {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+.recent-movie {
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    color: var(--button);
+    padding: 18px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.title{
+    font-weight: 700;
+}
+
+.type{
+    display: inline-flex;
+    align-items: center;    
+    justify-content: center;
+
+    padding: 8px;
+    border-radius: 20px;
+    width: 30%;
+    min-width: 60px;
+    background-color: #fef3c7c2;
+}
+
+.view{
+    font-family: var(--font-sans);
+    font-weight: 600;
+    padding: 1%;
+    border-radius: 999px;
+    background-color: var(--title);
+    color: var(--button);
+    position: absolute;
+    right: 1%;
+    top: 2%;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.view:hover{
+    transform: scale(1.07);
+}

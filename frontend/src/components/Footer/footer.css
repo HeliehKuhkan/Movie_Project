@@ -5,34 +5,50 @@
 }
 
 .footer{
-    display: flex;
-    align-items: center;
-    gap: 1%;
-
     width: 100vw;
-    height: 8vh;
+    height: 9vh;
     min-height: 50px;
-    background: var(--back-shadow);
+    background: var(--back-shadow2);
     backdrop-filter: blur(18px);
     border-top: 1px solid var(--border);
 
-    color: var(--button);
     font-family: var(--font-sans);
     font-size: var(--fs-md);
-
-    padding-left: 1%;
-
 }   
 
 .footer a{
+    color: var(--title);
     border: 1px solid var(--border);
     background-color: var(--card);
-    padding: 8px;
+    padding: 7px;
+    margin-left: 5px;
     border-radius: 50%;
 
     transition: .25s;
 }
 
+.ins{
+    position: absolute;
+    top: 2px;
+}
+
+.tel{
+    position: absolute;
+    top: 2px;
+    left: 40px;
+}
+
 .footer a:hover{
     transform: scale(1.05);
+}
+
+.footer p{
+    width: 40%;
+    position: absolute;
+    bottom: 0px;
+    margin: 5px;
+
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    color: var(--button);
 }

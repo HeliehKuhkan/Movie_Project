@@ -58,7 +58,7 @@ function MainPage(){
                     <div className={`movie-card ${selectedMovie.id === movie.id ? "active" : ""}`} 
                         key={movie.id} onClick={() => setCurrentIndex((movies.findIndex(m => m.id === movie.id )-1+ movies.length)% movies.length)}>
                         <h3>{movie.title}</h3>
-                        <img src={movie.poster} alt={movie.title} className="main-movie-image" />
+                        <img src={movie.backdrop} alt={movie.title} className="main-movie-image" />
                     </div>
 
                     ))}
@@ -90,10 +90,7 @@ function MainPage(){
 
                     <div className="movie-details">
 
-                        <span>-</span>
-
                         <span>{selectedMovie.duration}</span>
-
                         <span>{selectedMovie.year}</span>
 
                     </div>

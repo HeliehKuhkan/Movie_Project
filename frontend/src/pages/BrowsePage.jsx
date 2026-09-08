@@ -1,12 +1,13 @@
 import { Fragment,useState,useEffect } from "react";
 import "./BrowsePage.css";
 import MovieCard from '../components/MovieCard';
-import { useParams,useSearchParams  } from "react-router-dom";
+import { useParams,useSearchParams,useNavigate   } from "react-router-dom";
 
 /*import movies from "../data/movies";*/
 import { getMoviesWithFilters } from "../api/movies";
 
 function BrowsePage(){
+    const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
 
     const { type: routeType } = useParams();
@@ -19,6 +20,8 @@ function BrowsePage(){
     setYear("");
     setRating("");
     setSort("");
+
+    navigate(search ? `/search?q=${encodeURIComponent(search)}` : "/browse");
     };
 
     const [type, setType] = useState("");
@@ -96,6 +99,10 @@ function BrowsePage(){
                         <option value="Adventure">Adventure</option>
                         <option value="Crime">Crime</option>
                         <option value="Comedy">Comedy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Horror">Horror</option>
                     </select>
 
                     <select value={year} onChange={(e) => setYear(e.target.value)} name="" id="">
@@ -130,7 +137,10 @@ function BrowsePage(){
 
                 <div className="active-filters">
                     
-                    {type && <button className="filter-tag" onClick={() => setType("")}>{type} ✕</button>}
+                    {type && <button className="filter-tag" onClick={() => {
+                        setType("");
+                        navigate(search ? `/search?q=${encodeURIComponent(search)}` : "/browse");
+                    }}>{type} ✕</button>}
                     {genre && <button className="filter-tag" onClick={() => setGenre("")}>{genre} ✕</button>}
                     {year && <button className="filter-tag" onClick={() => setYear("")}>{year}+ ✕</button>}
                     {rating && <button className="filter-tag" onClick={() => setRating("")}>⭐{rating}+ ✕</button>}
@@ -140,7 +150,7 @@ function BrowsePage(){
             </div>
             {search && (
                 <h2 className="search-result-title">
-                    Search results for: "{search}"
+                    Search results for: "{search}" 
                 </h2>
             )}
             <div className="movies-grid">

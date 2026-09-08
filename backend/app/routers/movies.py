@@ -5,6 +5,9 @@ from app.database import SessionLocal
 from app.models.movie import Movie
 from app.schemas.movie import MovieResponse,MovieCreate,MovieUpdate
 
+#برای اضافه کردن قسمت ادمین
+from app.routers.auth import get_current_admin
+
 
 router = APIRouter(
     prefix="/movies",
@@ -84,7 +87,7 @@ def get_movie(request: Request,movie_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/", response_model=MovieResponse)
-def create_movie(movie: MovieCreate, db: Session = Depends(get_db)):
+def create_movie(movie: MovieCreate, db: Session = Depends(get_db),current_admin = Depends(get_current_admin)):
     new_movie = Movie(**movie.model_dump())
 
     db.add(new_movie)
@@ -97,7 +100,8 @@ def create_movie(movie: MovieCreate, db: Session = Depends(get_db)):
 def update_movie(
     movie_id: int,
     movie: MovieUpdate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_admin = Depends(get_current_admin)
 ):
     existing_movie = db.query(Movie).filter(Movie.id == movie_id).first()
 
@@ -116,7 +120,7 @@ def update_movie(
     return existing_movie
 
 @router.delete("/{movie_id}")
-def delete_movie(movie_id: int, db: Session = Depends(get_db)):
+def delete_movie(movie_id: int, db: Session = Depends(get_db),current_admin = Depends(get_current_admin)):
     movie = db.query(Movie).filter(Movie.id == movie_id).first()
 
     if movie is None:

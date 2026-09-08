@@ -42,7 +42,7 @@
     width: 46%;
     max-width: 650px;
     min-width: 300px;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(230,230,230,.4);
     padding: 2.5%;
     border-radius: 20px;
     border: 1px solid var(--border);
@@ -53,13 +53,23 @@
     
 }
 
-.movie-meta{
+.movie-details{
+    margin-top: 5px;
+}
+
+.movie-meta, .lang{
     display: flex;
     gap: 18px;
     font-size: var(--fs-md);
 }
 
-.movie-meta span , .movie-details p , .actor-card{
+.movie-meta span, .lang span{
+    padding:6px 12px;
+    border-radius:15px;
+    background-color: var(--span);
+}
+
+.movie-meta span , .movie-details p , .actor-card, .lang{
     font-family: var(--font);
     color: var(--button);
 }
@@ -78,6 +88,7 @@
 }
 
 .cast-section h3{
+    min-width: 40px;
     color: var(--button);
 }
 
@@ -138,7 +149,8 @@
 }
 
 .similar-list{
-    margin-left: 15px;
+    margin:0 15px;
+    padding: 10px 0px;
 
     overflow-x:auto;
     scroll-behavior: smooth;

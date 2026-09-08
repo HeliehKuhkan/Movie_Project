@@ -61,13 +61,12 @@
 
 .clear-btn{
     position: absolute;
-    width: 11%;
-    min-width: 80px;
-    padding: .55rem 1rem;
-    margin-bottom: .5%;
-    margin-right: .5%;
+    width: 15%;
+    max-width: 160px;
+    padding: .5rem 1rem;
+    margin: 0.5%;
 
-    border-radius: 9999px;
+    border-radius: 999px;
 
     font-size: var(--fs-md);
     font-family: var(--font-sans);
@@ -126,4 +125,21 @@
     grid-template-columns: repeat(auto-fit,240px);
     justify-content: center;
     gap: 40px;
+}
+
+.search-result-title{
+    font-family: var(--font-sans);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+
+    margin-left: 1%;
+
+    color: #EEF4FF;
+}
+
+.no-results{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    color: #EEF4FF;
 }
