@@ -232,4 +232,4 @@ dist/
 
 .vscode/
 
-*.db
+#*.db
