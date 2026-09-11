@@ -139,6 +139,14 @@ Here are some screenshots of the application:
 </p>
 
 <p align="center">
-  <img src="screenshots/admin-dashboard.png" width="48%">
-  <img src="screenshots/admin-movies.png" width="48%">
+  <img src="screenshots/log-in.png" width="48%">
+</p>
+
+<p align="center">
+  <img src="screenshots/admin-dash.png" width="48%">
+  <img src="screenshots/admin-movie.png" width="48%">
+</p>
+
+<p align="center">
+  <img src="screenshots/admin-users.png" width="48%">
 </p>
