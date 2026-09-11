@@ -303,7 +303,7 @@ function MovieForm({initialData,movieId }) {
                 <input
                     type="text"
                     name="backdrop"
-                    placeholder="/backdrops/example.jpg"
+                    placeholder="/backdrop/example.jpg"
                     value={formData.backdrop}
                     onChange={handleChange}
                 />

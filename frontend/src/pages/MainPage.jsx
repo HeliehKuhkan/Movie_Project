@@ -38,7 +38,9 @@ function MainPage(){
     return <div>Loading...</div>;
     }
                                 
-    const trendingMovies = movies.slice(0, 6);
+    const trendingMovies = [...movies]
+    .sort((a, b) => b.year - a.year)
+    .slice(0, 6);
     const topRatedMovies = [...movies].sort((a, b) => b.rating - a.rating).slice(0, 6);
 
 

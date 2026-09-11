@@ -122,3 +122,23 @@ The frontend will run at:
 ```text
 http://localhost:5173
 ```
+
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+<p align="center">
+  <img src="screenshots/main.png" width="48%">
+  <img src="screenshots/browse.gif" width="48%">
+</p>
+
+<p align="center">
+  <img src="screenshots/details.png" width="48%">
+  <img src="screenshots/my-list.png" width="48%">
+</p>
+
+<p align="center">
+  <img src="screenshots/admin-dashboard.png" width="48%">
+  <img src="screenshots/admin-movies.png" width="48%">
+</p>

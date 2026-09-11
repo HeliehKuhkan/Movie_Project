@@ -2,6 +2,21 @@ import { useEffect, useState } from "react";
 import { getAdminUsers,deleteAdminUser,makeAdmin,removeAdmin  } from "../../api/admin";
 import "./AdminUsers.css";
 
+const token =
+    localStorage.getItem("access_token") ||
+    sessionStorage.getItem("access_token");
+
+let currentUserId = null;
+
+if (token) {
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        currentUserId = Number(payload.sub);
+    } catch (error) {
+        console.log("Invalid token");
+    }
+}
+
 function AdminUsers() {
 
     const [users, setUsers] = useState([]);
@@ -152,19 +167,33 @@ function AdminUsers() {
                         </span>
 
                         <div className="actions-btn">
-                            <button className="delete-user-btn" onClick={() => handleDelete(user.id)}>Delete</button>
+                            {user.id !== currentUserId && (
+                                <>
+                                    <button
+                                        className="delete-user-btn"
+                                        onClick={() => handleDelete(user.id)}
+                                    >
+                                        Delete
+                                    </button>
 
-                            {!user.is_admin ? (
-                                <button className="make-admin-btn" onClick={() => handleMakeAdmin(user.id)}>
-                                    Make Admin
-                                </button>
-                            ) : (
-                                <button className="remove-admin-btn" onClick={() => handleRemoveAdmin(user.id)}>
-                                    Remove Admin
-                                </button>
+                                    {!user.is_admin ? (
+                                        <button
+                                            className="make-admin-btn"
+                                            onClick={() => handleMakeAdmin(user.id)}
+                                        >
+                                            Make Admin
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="remove-admin-btn"
+                                            onClick={() => handleRemoveAdmin(user.id)}
+                                        >
+                                            Remove Admin
+                                        </button>
+                                    )}
+                                </>
                             )}
                         </div>
-
                     </div>
                 ))}
 
