@@ -1,4 +1,4 @@
-# Movie Platform
+# Movie Discovery Platform
 A full-stack movie platform developed as a bachelor's final project using React and FastAPI.
 
 # About the Project
