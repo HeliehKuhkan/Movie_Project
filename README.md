@@ -8,26 +8,26 @@ The project also includes an Admin Panel for managing movies and users.
 
 # Features
 ### 👤 User Features
-User registration and login
-JWT-based authentication
-Browse movies
-Search movies
-Filter movies by: Genre, Type, Year, Rating, Sort movies
-View movie details
-Add and remove movies from favorites
-My List page
-Similar movie recommendations
+User registration and login,
+JWT-based authentication,
+Browse movies,
+Search movies,
+Filter movies by: Genre, Type, Year, Rating, Sort movies.
+View movie details,
+Add and remove movies from favorites,
+My List page,
+Similar movie recommendations,
 ### 🔐 Admin Features
-Admin authentication and authorization
-Admin dashboard
-Movie management
-Add new movies
-Edit movies
-Delete movies
-View users
-Promote users to admin
-Remove admin privileges from users
-Movie list pagination
+Admin authentication and authorization,
+Admin dashboard,
+Movie management,
+Add new movies,
+Edit movies,
+Delete movies,
+View users,
+Promote users to admin,
+Remove admin privileges from users,
+Movie list pagination.
 
 ## Technologies
 
